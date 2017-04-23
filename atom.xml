@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-04-22T03:52:06.297Z</updated>
+  <updated>2017-04-22T08:59:08.276Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>test</title>
+    <link href="http://yoursite.com/2017/04/22/test/"/>
+    <id>http://yoursite.com/2017/04/22/test/</id>
+    <published>2017-04-22T08:49:41.000Z</published>
+    <updated>2017-04-22T08:59:08.276Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="aaaa"><a href="#aaaa" class="headerlink" title="aaaa"></a>aaaa</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">printf</span>(<span class="string">"hello world\n"</span>);</div></pre></td></tr></table></figure>
+<p>$ O(logn) $</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;aaaa&quot;&gt;&lt;a href=&quot;#aaaa&quot; class=&quot;headerlink&quot; title=&quot;aaaa&quot;&gt;&lt;/a&gt;aaaa&lt;/h3&gt;&lt;figure class=&quot;highlight cpp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
