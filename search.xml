@@ -5,7 +5,7 @@
     <entry>
       <title><![CDATA[Hello World!]]></title>
       <url>%2F2017%2F04%2F22%2Fhello-world%2F</url>
-      <content type="text"><![CDATA[在新站的第一篇博客。多多关照。1printf("hello world\n");]]></content>
+      <content type="text"><![CDATA[在新站的第一篇博客。多多关照。 1printf("hello world\n");]]></content>
     </entry>
 
     

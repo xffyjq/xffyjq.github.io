@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-04-23T13:47:29.699Z</updated>
+  <updated>2017-04-23T13:59:57.810Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,14 +20,15 @@
     <link href="http://yoursite.com/2017/04/22/hello-world/"/>
     <id>http://yoursite.com/2017/04/22/hello-world/</id>
     <published>2017-04-22T08:49:41.000Z</published>
-    <updated>2017-04-23T13:47:29.699Z</updated>
+    <updated>2017-04-23T13:59:57.810Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="在新站的第一篇博客。多多关照。"><a href="#在新站的第一篇博客。多多关照。" class="headerlink" title="在新站的第一篇博客。多多关照。"></a>在新站的第一篇博客。多多关照。</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">printf</span>(<span class="string">"hello world\n"</span>);</div></pre></td></tr></table></figure>
+    <content type="html"><![CDATA[<h3 id="在新站的第一篇博客。多多关照。"><a href="#在新站的第一篇博客。多多关照。" class="headerlink" title="在新站的第一篇博客。多多关照。"></a>在新站的第一篇博客。多多关照。</h3><a id="more"></a>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">printf</span>(<span class="string">"hello world\n"</span>);</div></pre></td></tr></table></figure>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;在新站的第一篇博客。多多关照。&quot;&gt;&lt;a href=&quot;#在新站的第一篇博客。多多关照。&quot; class=&quot;headerlink&quot; title=&quot;在新站的第一篇博客。多多关照。&quot;&gt;&lt;/a&gt;在新站的第一篇博客。多多关照。&lt;/h3&gt;&lt;figure class=&quot;highli
+      &lt;h3 id=&quot;在新站的第一篇博客。多多关照。&quot;&gt;&lt;a href=&quot;#在新站的第一篇博客。多多关照。&quot; class=&quot;headerlink&quot; title=&quot;在新站的第一篇博客。多多关照。&quot;&gt;&lt;/a&gt;在新站的第一篇博客。多多关照。&lt;/h3&gt;
     
     </summary>
     
