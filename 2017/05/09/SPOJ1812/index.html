@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="SAM," />
 
 
 
@@ -90,17 +90,17 @@
 
 
 
-<meta name="description" content="&amp;emsp;&amp;emsp;在新站的第一篇博客。多多关照。">
-<meta name="keywords">
+<meta name="description" content="&amp;emsp;&amp;emsp;题意:给你n个串，求它们的LCS。">
+<meta name="keywords" content="SAM">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World!">
-<meta property="og:url" content="http://xffyjq.github.com/2017/04/22/hello-world/index.html">
+<meta property="og:title" content="SPOJ1812 LCS2">
+<meta property="og:url" content="http://xffyjq.github.com/2017/05/09/SPOJ1812/index.html">
 <meta property="og:site_name" content="xffyjq's Page">
-<meta property="og:description" content="&amp;emsp;&amp;emsp;在新站的第一篇博客。多多关照。">
-<meta property="og:updated_time" content="2017-05-09T04:40:42.229Z">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;题意:给你n个串，求它们的LCS。">
+<meta property="og:updated_time" content="2017-05-10T05:27:32.797Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World!">
-<meta name="twitter:description" content="&amp;emsp;&amp;emsp;在新站的第一篇博客。多多关照。">
+<meta name="twitter:title" content="SPOJ1812 LCS2">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;题意:给你n个串，求它们的LCS。">
 
 
 
@@ -128,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://xffyjq.github.com/2017/04/22/hello-world/"/>
+  <link rel="canonical" href="http://xffyjq.github.com/2017/05/09/SPOJ1812/"/>
 
 
 
 
 
-  <title>Hello World! | xffyjq's Page</title>
+  <title>SPOJ1812 LCS2 | xffyjq's Page</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -297,7 +297,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://xffyjq.github.com/2017/04/22/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://xffyjq.github.com/2017/05/09/SPOJ1812/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xffyjq">
@@ -318,7 +318,7 @@
             
             
               
-                Hello World!
+                SPOJ1812 LCS2
               
             
           </h1>
@@ -333,8 +333,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-22T16:49:41+08:00">
-                2017-04-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-09T12:38:00+08:00">
+                2017-05-09
               </time>
             
 
@@ -368,8 +368,8 @@
       
 
       
-        <h3 id="emsp-emsp-在新站的第一篇博客。多多关照。"><a href="#emsp-emsp-在新站的第一篇博客。多多关照。" class="headerlink" title="&emsp;&emsp;在新站的第一篇博客。多多关照。"></a>&emsp;&emsp;在新站的第一篇博客。多多关照。</h3><a id="more"></a>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">printf</span>(<span class="string">"hello world\n"</span>);</div></pre></td></tr></table></figure>
+        <h3 id="emsp-emsp-题意-给你n个串，求它们的LCS。"><a href="#emsp-emsp-题意-给你n个串，求它们的LCS。" class="headerlink" title="&emsp;&emsp;题意:给你n个串，求它们的LCS。"></a>&emsp;&emsp;题意:给你n个串，求它们的LCS。</h3><a id="more"></a>
+<p>&emsp;&emsp;后缀系列的经典问题。<br>&emsp;&emsp;这道题用后缀数组+二分当然可以做。将n个串连接成一个长串，只需要每次二分LCP，看是否有n个后缀LCP大于该值，又正好分属n个串就好。<br>&emsp;&emsp;但这个复杂度显然是$O(n \log n)$的，在这里过不了。我们考虑用SAM解决这个问题。<br>&emsp;&emsp;首先我们从两个串的情况入手: (SPOJ LCS正是两串LCS的题目)<br>&emsp;&emsp;将第一个串$s_1$的SAM构建出来，然后在上面运行第二个串$s_2$。记录一个到当前位的LCS长度，记作len。如果当前到了第i位，节点u有$s_2[i]$的转移边,则走转移边，len长度+1。如果没有该转移边，由于next边上节点所包含的串均为当前点u包含串的后缀，所以沿着next边向前走，走到第一个有该转移边的节点v。根据节点的定义，一个节点有转移边，则其中所有串均可以通过这条转移边到另一个合法子串。于是我们只需要取最长的一个。即走过v的转移边，将len重新赋值为$Max[v] + 1$。如果走到根都没有转移边的话，就从根重新开始，并将len赋值为0。每走一步更新答案即可。<br>&emsp;&emsp;如何处理多个串的情况?我们对于每个节点多记录两个值，一个代表所有串运行到当前点时的LCS值，一个代表当前串运行到当前点时的LCS，即上面的len。注:一个串可能被运行到一个点多次，记录最大值即可。要注意的是，在之前的双串LCS中，我们忽略了一个东西:当我们运行到一个点，即代表这个点包含的串在原串出现时，该节点通过next边连接的所有点，即该串的所有后缀也都在原串出现了，所以之前的点的len值也需要更新。在两个串的情况里，运行到一个点时，其代表串的后缀显然不会更优，并不用在意这一点。但是在多串中，我们需要考虑其他串的影响，就要基数排序排出节点间的拓扑序，按照其逆序更新所有节点的真正len值。运行完一个串后，将每个节点的所有串运行到当前点的LCS值对当前len取min即可。(如果没运行到则len=0，说明该节点代表的串不会参与答案更新)<br>&emsp;&emsp;最后运行完所有串后，所有节点LCS的max值就是答案了。<br>&emsp;&emsp;这道题卡时间，多清空几个数组都会T。不过错误算法(不基数排序)可以水过去。。。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> rep(i, l, r) for(int i = l, i##end = r; i &lt;= i##end; ++i)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> drep(i, l, r) for(int i = l, i##end = r; i &gt;= i##end; --i)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> mp make_pair</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ms(a, b) memset(a, b, sizeof a)</span></div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt; <span class="title">inline</span> <span class="title">bool</span> <span class="title">chkmax</span>(<span class="title">T</span>&amp; <span class="title">a</span>, <span class="title">T</span> <span class="title">b</span>) &#123;</span> <span class="keyword">return</span> a &lt; b ? a = b, <span class="number">1</span> : <span class="number">0</span>; &#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt; <span class="title">inline</span> <span class="title">bool</span> <span class="title">chkmin</span>(<span class="title">T</span>&amp; <span class="title">a</span>, <span class="title">T</span> <span class="title">b</span>) &#123;</span> <span class="keyword">return</span> a &gt; b ? a = b, <span class="number">1</span> : <span class="number">0</span>; &#125;</div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="function"><span class="keyword">inline</span> T&amp; <span class="title">read</span><span class="params">(T&amp; x)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">static</span> <span class="keyword">char</span> c; <span class="keyword">bool</span> flag = <span class="number">0</span>;</div><div class="line">	<span class="keyword">while</span>(!<span class="built_in">isdigit</span>(c = getchar())) <span class="keyword">if</span>(c == <span class="string">'-'</span>) flag = <span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span>(x = c ^ <span class="number">48</span>; <span class="built_in">isdigit</span>(c = getchar()); x = (x &lt;&lt; <span class="number">3</span>) + (x &lt;&lt; <span class="number">1</span>) + (c ^ <span class="number">48</span>));</div><div class="line">	<span class="keyword">if</span>(flag) x = -x; <span class="keyword">return</span> x;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">100010</span>, SIZE = maxn &lt;&lt; <span class="number">2</span>, SIGMA = <span class="number">26</span>;</div><div class="line"></div><div class="line"><span class="keyword">namespace</span> SAM</div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> ch[SIZE][SIGMA], next[SIZE], Max[SIZE];</div><div class="line">    <span class="keyword">int</span> LCS[SIZE], LEN[SIZE];</div><div class="line">    <span class="keyword">int</span> cur, last;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123; cur = last = <span class="number">1</span>; &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">New</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; Max[++cur] = x; <span class="keyword">return</span> cur; &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">extend</span><span class="params">(<span class="keyword">int</span> c)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">int</span> u = New(Max[last] + <span class="number">1</span>), v = last;</div><div class="line">        <span class="keyword">for</span>(; v &amp;&amp; !ch[v][c]; v = next[v]) ch[v][c] = u;</div><div class="line"></div><div class="line">        <span class="keyword">if</span>(!v) next[u] = <span class="number">1</span>;</div><div class="line">        <span class="keyword">else</span></div><div class="line">        &#123;</div><div class="line">            <span class="keyword">int</span> h = ch[v][c];</div><div class="line">            <span class="keyword">if</span>(Max[h] == Max[v] + <span class="number">1</span>) next[u] = h;</div><div class="line">            <span class="keyword">else</span></div><div class="line">            &#123;</div><div class="line">                <span class="keyword">int</span> o = New(Max[v] + <span class="number">1</span>);</div><div class="line">                <span class="built_in">memcpy</span>(ch[o], ch[h], <span class="keyword">sizeof</span> ch[h]);</div><div class="line">                next[o] = next[h];</div><div class="line">                next[h] = next[u] = o;</div><div class="line">                <span class="keyword">for</span>(; v &amp;&amp; ch[v][c] == h; v = next[v]) ch[v][c] = o;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        last = u;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> SAM;</div><div class="line"></div><div class="line"><span class="keyword">char</span> s[maxn];</div><div class="line"></div><div class="line"><span class="keyword">int</span> n, ans;</div><div class="line"></div><div class="line"><span class="keyword">int</span> sum[maxn], t[SIZE];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    init();</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>, s); n = <span class="built_in">strlen</span>(s);</div><div class="line">    rep(i, <span class="number">0</span>, n - <span class="number">1</span>) extend(s[i] - <span class="string">'a'</span>);</div><div class="line">    rep(i, <span class="number">1</span>, cur) LCS[i] = Max[i];</div><div class="line"></div><div class="line">    rep(i, <span class="number">1</span>, cur) ++sum[Max[i]];</div><div class="line">    rep(i, <span class="number">1</span>, n) sum[i] += sum[i - <span class="number">1</span>];</div><div class="line">    drep(i, cur, <span class="number">1</span>) t[--sum[Max[i]]] = i;</div><div class="line"></div><div class="line">    <span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%s"</span>, s))</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">int</span> h = <span class="number">1</span>, len = <span class="number">0</span>;</div><div class="line">        ms(LEN, <span class="number">0</span>);</div><div class="line">        rep(i, <span class="number">0</span>, <span class="built_in">strlen</span>(s) - <span class="number">1</span>)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span>(ch[h][s[i] - <span class="string">'a'</span>]) ++len, h = ch[h][s[i] - <span class="string">'a'</span>];</div><div class="line">            <span class="keyword">else</span></div><div class="line">            &#123;</div><div class="line">                <span class="keyword">while</span>(h &amp;&amp; !ch[h][s[i] - <span class="string">'a'</span>]) h = next[h];</div><div class="line">                <span class="keyword">if</span>(!h) h = <span class="number">1</span>, len = <span class="number">0</span>;</div><div class="line">                <span class="keyword">else</span> len = Max[h] + <span class="number">1</span>, h = ch[h][s[i] - <span class="string">'a'</span>];</div><div class="line">            &#125;</div><div class="line">            chkmax(LEN[h], len);</div><div class="line">        &#125;</div><div class="line">        drep(i, cur, <span class="number">1</span>) chkmax(LEN[next[t[i]]], LEN[t[i]]);</div><div class="line">        rep(i, <span class="number">1</span>, cur) chkmin(LCS[i], LEN[i]);</div><div class="line">    &#125;</div><div class="line">    rep(i, <span class="number">1</span>, cur) chkmax(ans, LCS[i]);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -397,6 +397,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/SAM/" rel="tag"># SAM</a>
+          
+        </div>
+      
 
       
         
@@ -406,15 +412,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/04/BZOJ4025/" rel="next" title="BZOJ4025 二分图">
-                <i class="fa fa-chevron-left"></i> BZOJ4025 二分图
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/07/POJ1509/" rel="prev" title="POJ1509 Glass Beads">
+                POJ1509 Glass Beads <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -545,7 +551,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#emsp-emsp-在新站的第一篇博客。多多关照。"><span class="nav-number">1.</span> <span class="nav-text">  在新站的第一篇博客。多多关照。</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#emsp-emsp-题意-给你n个串，求它们的LCS。"><span class="nav-number">1.</span> <span class="nav-text">  题意:给你n个串，求它们的LCS。</span></a></li></ol></div>
             
 
           </div>
