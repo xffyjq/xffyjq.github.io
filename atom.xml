@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xffyjq.github.com/"/>
-  <updated>2017-12-31T03:40:22.808Z</updated>
+  <updated>2017-12-31T03:59:55.444Z</updated>
   <id>http://xffyjq.github.com/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>MatrixTree</title>
+    <title>矩阵树小结</title>
     <link href="http://xffyjq.github.com/2017/12/30/MatrixTree/"/>
     <id>http://xffyjq.github.com/2017/12/30/MatrixTree/</id>
     <published>2017-12-30T07:52:14.000Z</published>
-    <updated>2017-12-31T03:40:22.808Z</updated>
+    <updated>2017-12-31T03:59:55.444Z</updated>
     
     <content type="html"><![CDATA[<h3 id="emsp-emsp-这篇博客主要是对矩阵树的一些简要总结。"><a href="#emsp-emsp-这篇博客主要是对矩阵树的一些简要总结。" class="headerlink" title="&emsp;&emsp;这篇博客主要是对矩阵树的一些简要总结。"></a>&emsp;&emsp;这篇博客主要是对矩阵树的一些简要总结。</h3><a id="more"></a>
 <h4 id="emsp-emsp-一、矩阵树定理基本形式与证明思路"><a href="#emsp-emsp-一、矩阵树定理基本形式与证明思路" class="headerlink" title="&emsp;&emsp;一、矩阵树定理基本形式与证明思路"></a>&emsp;&emsp;一、矩阵树定理基本形式与证明思路</h4><p>&emsp;&emsp;矩阵树定理基本形式：一个无向图的生成树个数等于其拉普拉斯矩阵(度数矩阵-邻接矩阵)的任一余子式的值。</p>
@@ -86,7 +86,7 @@ det(E(G))det(E(G)^T)=det(deg(G)-mat(G))=det(L)</script><p>&emsp;&emsp;其中$mat
 <p>&emsp;&emsp;这个很好证，考察左式的定义即可。</p>
 <p>&emsp;&emsp;由于$E’(G)$为$E(G)$去掉任意一行得到，所以有:</p>
 <script type="math/tex; mode=display">
-ans=det(L')</script><p>&emsp;&emsp;其中$L’$为$L$的任一余子式。</p>
+ans=det(L')</script><p>&emsp;&emsp;其中$det(L’)$为$L$的任一余子式。</p>
 <h4 id="emsp-emsp-二、变元矩阵树定理"><a href="#emsp-emsp-二、变元矩阵树定理" class="headerlink" title="&emsp;&emsp;二、变元矩阵树定理"></a>&emsp;&emsp;二、变元矩阵树定理</h4><p>&emsp;&emsp;若将邻接矩阵定义为($mat(G)_{ij}=i与j之间边权和$)，度数矩阵定义为($deg(G)_{ij}=[i=j]i$相连X边的边权和)，则：</p>
 <script type="math/tex; mode=display">
 ans=det(L')=\sum_T\prod_{e\in{T}}w_e</script><p>&emsp;&emsp;$T$为图$G$所有生成树，$e$为图$G$中的边，$w_e$为$e$的边权。注意这里的边权可以为实数。</p>
