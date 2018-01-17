@@ -97,7 +97,7 @@
 <meta property="og:url" content="http://xffyjq.github.com/2017/12/30/MatrixTree/index.html">
 <meta property="og:site_name" content="xffyjq's Page">
 <meta property="og:description" content="&amp;emsp;&amp;emsp;这篇博客主要是对矩阵树的一些简要总结。">
-<meta property="og:updated_time" content="2017-12-31T03:59:55.444Z">
+<meta property="og:updated_time" content="2018-01-17T01:09:15.483Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="矩阵树小结">
 <meta name="twitter:description" content="&amp;emsp;&amp;emsp;这篇博客主要是对矩阵树的一些简要总结。">
@@ -432,8 +432,8 @@ det(E(G))det(E(G)^T)=det(deg(G)-mat(G))=det(L)</script><p>&emsp;&emsp;其中$mat
 <p>&emsp;&emsp;这个很好证，考察左式的定义即可。</p>
 <p>&emsp;&emsp;由于$E’(G)$为$E(G)$去掉任意一行得到，所以有:</p>
 <script type="math/tex; mode=display">
-ans=det(L')</script><p>&emsp;&emsp;其中$det(L’)$为$L$的任一余子式。</p>
-<h4 id="emsp-emsp-二、变元矩阵树定理"><a href="#emsp-emsp-二、变元矩阵树定理" class="headerlink" title="&emsp;&emsp;二、变元矩阵树定理"></a>&emsp;&emsp;二、变元矩阵树定理</h4><p>&emsp;&emsp;若将邻接矩阵定义为($mat(G)_{ij}=i与j之间边权和$)，度数矩阵定义为($deg(G)_{ij}=[i=j]i$相连X边的边权和)，则：</p>
+ans=det(L')</script><p>&emsp;&emsp;其中$det(L’)$为$L$去掉$i$行$i$列的余子式$M_{ii}$($i$为不大于$n$的任意正整数)。</p>
+<h4 id="emsp-emsp-二、变元矩阵树定理"><a href="#emsp-emsp-二、变元矩阵树定理" class="headerlink" title="&emsp;&emsp;二、变元矩阵树定理"></a>&emsp;&emsp;二、变元矩阵树定理</h4><p>&emsp;&emsp;若将邻接矩阵定义为($mat(G)_{ij}=i与j之间边权和$)，度数矩阵定义为($deg(G)_{ij}=[i=j]i$相连边的边权和)，则：</p>
 <script type="math/tex; mode=display">
 ans=det(L')=\sum_T\prod_{e\in{T}}w_e</script><p>&emsp;&emsp;$T$为图$G$所有生成树，$e$为图$G$中的边，$w_e$为$e$的边权。注意这里的边权可以为实数。</p>
 <p>&emsp;&emsp;这个定理可以将矩阵树基本定理推广到概率等加强形式。</p>
@@ -643,8 +643,8 @@ ans=det(L')=\sum_T\prod_{e\in{T}}w_e</script><p>&emsp;&emsp;$T$为图$G$所有�
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-superpowers"></i>
   </span>
